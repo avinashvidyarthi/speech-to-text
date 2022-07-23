@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+			integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+			crossorigin="anonymous"
+		/>
+		<title>Speech-to-Text</title>
+		<style>
+			body {
+				background: #005aa7; /* fallback for old browsers */
+				background: -webkit-linear-gradient(
+					to right,
+					#fffde4,
+					#005aa7
+				); /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(
+					to right,
+					#fffde4,
+					#005aa7
+				); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<div class="jumbotron p-3 mt-5">
+						<div>
+							<h3 class="text-center">Speech-To-Text</h3>
+							<hr class="my-2" />
+						</div>
+						<div class="text-center my-3">
+							<button
+								class="btn btn-primary btn-lg"
+								id="record-btn"
+								onclick="recordBtnClick()"
+							>
+								Record
+							</button>
+						</div>
+						<div>
+							Transcript:
+							<textarea
+								class="form-control"
+								style="background-color: white"
+								id="output-area"
+								disabled
+								rows="6"
+							></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+		<script
+			src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+			integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/short-unique-id@latest/dist/short-unique-id.min.js"></script>
+		<script src="./script.js"></script>
+	</body>
+</html>
