@@ -27,7 +27,7 @@ const recordBtnClick = async () => {
 			.getUserMedia(constraints)
 			.then(async function (mediaStream) {
 				let mediaRecorder = new MediaRecorder(mediaStream);
-				console.log(mediaStream.getTracks()[0].getSettings());
+				// console.log(mediaStream.getTracks()[0].getSettings());
 				mediaRecorder.onstart = function (e) {
 					this.chunks = [];
 				};
