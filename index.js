@@ -23,9 +23,9 @@ io.on('connection', (socket) => {
 			content: base64string.split(",")[1],
 		};
 		const config = {
-			encoding: 'MP3',
+			encoding: 'WEBM_OPUS',
 			languageCode: 'en-US',
-			sampleRateHertz: metadata.sampleRate,
+			sampleRateHertz: 48000,
 		};
 		const request = {
 			audio: audio,

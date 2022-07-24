@@ -27,6 +27,7 @@ const recordBtnClick = async () => {
 			.getUserMedia(constraints)
 			.then(async function (mediaStream) {
 				let mediaRecorder = new MediaRecorder(mediaStream);
+				console.log(mediaStream.getTracks()[0].getSettings());
 				mediaRecorder.onstart = function (e) {
 					this.chunks = [];
 				};
@@ -35,13 +36,13 @@ const recordBtnClick = async () => {
 				};
 				mediaRecorder.onstop = async function (e) {
 					const blob = new Blob(this.chunks, {
-						type: 'audio/mpeg-3',
+						type: 'audio/webm codecs=opus',
 					});
 					const base64string = await blobToBase64(blob);
 					socket.emit('voice:recording', {
 						base64string,
 						metadata: {
-							type: 'audio/mpeg-3',
+							type: 'audio/webm codecs=opus',
 							sampleRate: mediaStream.getTracks()[0].getSettings().sampleRate,
 						},
 					});
