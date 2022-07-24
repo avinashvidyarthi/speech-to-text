@@ -7,6 +7,9 @@ let mediaRecorderCopy, mediaStreamCopy;
 
 const recordBtn = document.getElementById('record-btn');
 const outputArea = document.getElementById('output-area');
+const languageSelect = document.getElementById('language');
+
+let language = 'en-IN';
 
 const blobToBase64 = (blob) => {
 	return new Promise((resolve, _) => {
@@ -16,13 +19,18 @@ const blobToBase64 = (blob) => {
 	});
 };
 
+const changeLanguage = (selectedLanguage) => {
+	language = selectedLanguage.value;
+	// console.log(language);
+};
+
 const recordBtnClick = async () => {
 	if (!isRecording) {
 		isRecording = true;
 		recordBtn.innerText = 'Stop';
 		recordBtn.classList.remove('btn-primary');
 		recordBtn.classList.add('btn-danger');
-        outputArea.innerText = "";
+		outputArea.innerText = '';
 		navigator.mediaDevices
 			.getUserMedia(constraints)
 			.then(async function (mediaStream) {
@@ -44,6 +52,7 @@ const recordBtnClick = async () => {
 						metadata: {
 							type: 'audio/webm codecs=opus',
 							sampleRate: mediaStream.getTracks()[0].getSettings().sampleRate,
+							language: language,
 						},
 					});
 				};
@@ -70,5 +79,5 @@ socket.on('voice:result', (transcription) => {
 	recordBtn.classList.remove('btn-secondary');
 	recordBtn.classList.add('btn-primary');
 	recordBtn.disabled = false;
-    outputArea.innerText = transcription;
+	outputArea.innerText = transcription;
 });

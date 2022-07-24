@@ -24,7 +24,7 @@ io.on('connection', (socket) => {
 		};
 		const config = {
 			encoding: 'WEBM_OPUS',
-			languageCode: 'en-US',
+			languageCode: metadata.language,
 			sampleRateHertz: 48000,
 		};
 		const request = {
