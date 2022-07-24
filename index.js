@@ -7,7 +7,7 @@ const { Server } = require('socket.io');
 const io = new Server(server);
 const path = require('path');
 const client = new speech.SpeechClient();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 
